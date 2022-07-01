@@ -32,6 +32,21 @@ export default props =>
                         placeholder="Digite o e-mail..." />
                 </div>
             </div>
+
+            <div className="col-12 col-md-6">
+                <div className="form-group">
+                    <label>Senha</label>
+                    <input type="password"
+                        name="password"
+                        id="password"
+                        className="form-control"
+                        autoComplete='off'
+                        value={props.password}
+                        onChange={e => props.updateField(e)}
+                        onKeyPress={props.handleEnterPress}
+                        placeholder="Defina uma senha..." />
+                </div>
+            </div>
         </div>
 
         <hr />

@@ -12,7 +12,7 @@ const headerProps = {
     subtitle: 'Cadastro de Usuários: Incluir, Listar, Alterar e Excluir'
 }
 
-const baseUrl = 'http://localhost:3001/users'
+const baseUrl = 'http://localhost:3001/users' //URL do backend
 
 const initialState = {
     user: {
@@ -89,7 +89,12 @@ export default class UserCrud extends React.Component {
     }
 
     load(user) {
-        this.setState({ user })
+        axios.put(`${baseUrl}/${user.id}`)
+            .then(response => {
+                const list = this.getUpdatedList(user, false)
+                this.setState({ user })
+                NotificationManager.success('Usuário alterado com sucesso', 'Editar Usuário')
+            })
     }
 
     remove(user) {
@@ -115,7 +120,7 @@ export default class UserCrud extends React.Component {
                     load={this.load}
                     remove={this.remove}
                 />
-            </Main>
+            </Main >
         )
     }
 }
